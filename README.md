@@ -15,7 +15,7 @@ Tested with the current Ansible 2.9, ansible-base 2.10, ansible-core 2.11, ansib
 
 ## Included content
 
-- ...
+- `inventory_filter` docs fragment and plugin utils.
 
 ## Using this collection
 
