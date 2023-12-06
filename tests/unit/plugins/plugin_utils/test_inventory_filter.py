@@ -87,7 +87,7 @@ def test_parse_errors(input, output):
     (
         'example.com',
         {},
-        [{'include': 'inventory_hostname == "foo.com"'}, {'exclude': True}],
+        [{'include': 'inventory_hostname == "foo.com"'}, {'exclude': 'false'}, {'exclude': True}],
         False,
     ),
 ])
