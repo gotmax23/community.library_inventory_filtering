@@ -25,16 +25,17 @@ def inventory():
 
 
 @pytest.mark.parametrize('input', [
+    None,
     [],
     [{'include': 'foo'}],
     [{'include': True}],
     [{'exclude': 'foo'}],
     [{'exclude': False}],
 ])
-def test_filters_success(input):
+def test_parse_success(input):
     result = parse_filters(input)
     print(result)
-    assert result == input
+    assert result == (input or [])
 
 
 @pytest.mark.parametrize('input, output', [
@@ -62,7 +63,7 @@ def test_filters_success(input):
         ),
     ),
 ])
-def test_filters_errors(input, output):
+def test_parse_errors(input, output):
     with pytest.raises(AnsibleError) as exc:
         parse_filters(input)
 
@@ -79,18 +80,18 @@ def test_filters_errors(input, output):
     ),
     (
         'example.com',
-        {},
+        {'foo': 'bar'},
         [{'include': 'inventory_hostname == "example.com"'}, {'exclude': 'true'}],
         True,
     ),
     (
         'example.com',
         {},
-        [{'include': 'inventory_hostname == "foo.com"'}, {'exclude': 'true'}],
+        [{'include': 'inventory_hostname == "foo.com"'}, {'exclude': True}],
         False,
     ),
 ])
-def test_filters_success(inventory, host, host_vars, filters, result):
+def test_filter_success(inventory, host, host_vars, filters, result):
     assert filter_host(inventory, host, host_vars, filters) == result
 
 
@@ -105,7 +106,7 @@ def test_filters_success(inventory, host, host_vars, filters, result):
         ),
     ),
 ])
-def test_filters_success(inventory, host, host_vars, filters, result):
+def test_filter_errors(inventory, host, host_vars, filters, result):
     with pytest.raises(AnsibleParserError) as exc:
         filter_host(inventory, host, host_vars, filters)
 
