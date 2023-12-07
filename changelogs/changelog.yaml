@@ -1,2 +1,8 @@
 ancestor: null
-releases: {}
+releases:
+  0.1.0:
+    changes:
+      release_summary: Initial test release.
+    fragments:
+    - 0.1.0.yml
+    release_date: '2023-12-07'
