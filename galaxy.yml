@@ -7,7 +7,7 @@
 
 namespace: community
 name: library_inventory_filtering_v1
-version: 0.1.0
+version: 1.0.0
 readme: README.md
 authors:
   - Felix Fontein (github.com/felixfontein)
