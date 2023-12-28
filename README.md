@@ -33,6 +33,18 @@ You can find more information in the [developer guide for collections](https://d
 
 See the [changelog](https://github.com/ansible-collections/community.library_inventory_filtering/tree/stable-1/CHANGELOG.rst).
 
+## Releasing, Versioning and Deprecation
+
+This collection follows [Semantic Versioning](https://semver.org/). More details on versioning can be found [in the Ansible docs](https://docs.ansible.com/ansible/latest/dev_guide/developing_collections.html#collection-versions).
+
+We plan to regularly release new minor or bugfix versions once new features or bugfixes have been implemented.
+
+Releasing the major version X happens from the `stable-X` branch. The collection name depends on the major branch; the collections released from `stable-1` have a `_v1` suffix; the collections released from `stable-2` have a `_v2` suffix; and so on. The different suffix allows to install multiple major releases of the collection in parallel. This makes it possible to migrate some collections to major version 2 without forcing to upgrade all of them simultaneously.
+
+Features might be backported to earlier stable branches. Bugfixes are backported as long as these stable branches are still maintained. Generally stable branches should still be maintained as long as they are still used by maintained branches of collections. Backporting bugfixes or creating more specialized bugfixes for stable branches might need to be done by the maintainers of the collections still using these branches.
+
+Since multiple versions are maintained in parallel, there is no need to wait between deprecation and removal. Removal requires a new major release (and thus a new collection name due to a different version suffix).
+
 ## More information
 
 - [Ansible Collection overview](https://github.com/ansible-collections/overview)
