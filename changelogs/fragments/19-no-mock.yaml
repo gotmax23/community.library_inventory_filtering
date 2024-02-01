@@ -1,0 +1,4 @@
+---
+trivial:
+  - tests - use ``unittest.mock`` instead of ``mock`` backport module on Python 3
+    (https://github.com/ansible-collections/community.library_inventory_filtering/pull/19).

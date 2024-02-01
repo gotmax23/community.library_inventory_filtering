@@ -11,10 +11,14 @@ import pytest
 from ansible.errors import AnsibleError, AnsibleParserError
 from ansible.template import Templar
 
-from mock import MagicMock
 from ansible_collections.community.internal_test_tools.tests.unit.mock.loader import DictDataLoader
 
 from .....plugins.plugin_utils.inventory_filter import parse_filters, filter_host
+
+try:
+    from unittest.mock import MagicMock
+except ImportError:
+    from mock import MagicMock
 
 
 @pytest.fixture(scope='module')
